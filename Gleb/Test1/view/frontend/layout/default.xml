@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Gleb_Test1::css/custom.css" />
+    </head>
+    <body>
+        <referenceBlock name="form.subscribe">
+        	<block class="Gleb\Test1\Controller\Block\Name" name="newsletter.name" before="-" template="Gleb_Test1::name.phtml" />
+        </referenceBlock>
+        <move element="form.subscribe" destination="header-wrapper" after="-" />
+    </body>
+</page>
