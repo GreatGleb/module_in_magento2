@@ -2,7 +2,7 @@
 
 namespace Training\AdditionalTestOM\Model;
 
-class ManagerCustom
+class ManagerCustom implements ManagerInterface
 {
     public function create()
     {}
