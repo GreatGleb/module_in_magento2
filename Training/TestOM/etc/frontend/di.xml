@@ -6,4 +6,7 @@
     <type name="Magento\Framework\View\Element\Template">
         <plugin name="training_test_plugin_for_template" type="Training\TestOM\Plugin\Block\Template" />
     </type>
+    <type name="Magento\Catalog\Controller\Product\View">
+        <plugin name="training_test_plugin_for_products" type="Training\TestOM\Plugin\Controller\Product\View" />
+    </type>
 </config>
