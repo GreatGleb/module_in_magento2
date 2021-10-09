@@ -3,4 +3,7 @@
     <type name="Magento\Framework\UrlInterface">
         <plugin name="training_test_plugin" type="Training\TestOM\Plugin\Model\Url" />
     </type>
+    <type name="Magento\Framework\View\Element\Template">
+        <plugin name="training_test_plugin_for_template" type="Training\TestOM\Plugin\Block\Template" />
+    </type>
 </config>
