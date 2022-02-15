@@ -1,0 +1,21 @@
+<div class="field identity_verification required">
+    <label class="label" for="identity_verification">
+        <span>Identity Verification</span>
+    </label>
+    <div class="control">
+        <input type="file" name="identity_verification" id="identity_verification" value="" title="Identity Verification" class="input-text" data-validate="{required:true}"><br>
+        <input type="hidden" name="itisregistration" id="itisregistration" value="1">
+        <img id="identity_verification-preview_image" alt="Identity verification image" style="display: none; width: 150px; height: 150px; margin-top: 10px;" />
+    </div>
+</div>
+
+<script>
+    identity_verification.addEventListener('change', function(event) {
+        var output = document.getElementById('identity_verification-preview_image');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.style.display = "inline";
+        output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    });
+</script>

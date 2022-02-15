@@ -1,0 +1,238 @@
+<?php $statistic = $block->getStatistic();
+        if($statistic) {
+            $orders = $statistic[0];
+            $total = $statistic[1];
+?>
+
+<div class="admin__data-grid-outer-wrap" data-bind="scope: 'wk_product_list_custom.wk_product_list_custom'">
+    <div data-role="spinner" data-component="wk_product_list_custom.wk_product_list_custom.products_columns" class="admin__data-grid-loading-mask" style="display: none;">
+        <div class="spinner">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <!-- ko template: getTemplate() -->
+    <!-- ko foreach: {data: elems, as: 'element'} -->
+    <!-- ko if: hasTemplate() --><!-- ko template: getTemplate() -->
+    <div class="admin__data-grid-wrap" data-role="grid-wrapper">
+        <table class="data-grid data-grid-draggable" data-role="grid">
+            <thead>
+            <tr data-bind="foreach: {data: getVisible(), as: '$col'}"><!-- ko template: getHeader() -->
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Purchase Date') ?></span>
+                </th>
+                <!-- /ko --><!-- ko template: getHeader() -->
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Status') ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort" colspan="4">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Products') ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Subtotal') ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Shipping & Handling') ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __('Total due') ?></span>
+                </th>
+                <!-- /ko --></tr>
+            <tr data-bind="foreach: {data: getVisible(), as: '$col'}"><!-- ko template: getHeader() -->
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort" colspan="2">
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __("Name") ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __("Price") ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __("Quantity") ?></span>
+                </th><th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort">
+                    <span class="data-grid-cell-content" data-bind="i18n: label"><?php echo __("Total") ?></span>
+                </th>
+                <th class="data-grid-th _sortable _draggable" data-bind="css: {
+    _sortable: sortable,
+    _draggable: draggable,
+    _ascend: sorting === 'asc',
+    _descend: sorting === 'desc'}, click: sort" colspan="3">
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($orders as $index=>$order) { ?>
+            <!-- ko repeat: {foreach: rows, item: '$row'} --><tr class="data-row" data-bind="css: {'_odd-row': $index % 2}" data-repeat-index="0">
+                <!-- ko fastForEach: {data: getVisible(), as: '$col'} -->
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())"><?php echo $order["created_at"] ?></div>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())"><?php echo __($order["status"]) ?></div>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()" class="product_names" colspan="4">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())" style="text-overflow: ellipsis;"><?php
+                        $i = 0;
+                        foreach ($order["products"] as $product) {
+                            echo($product["product_name"]);
+                            if($i + 1 < sizeof($order["products"])) {
+                                echo ", ";
+                            }
+                            $i++;
+                        } ?></div>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()" class="product" style="display: none;">
+                    <?php echo $order["products"][0]["product_name"] ?>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()" class="product" style="display: none;">
+                    <?php echo $order["products"][0]["product_price"] ?>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()" class="product" style="display: none;">
+                    <?php echo $order["products"][0]["quantity_of_products"] ?>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()" class="product" style="display: none;">
+                    <?php echo $order["products"][0]["total_price"] ?>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())"><?php echo ($order["total_price_of_products"]); ?></div>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())"><?php echo ($order["total_price_of_shipping"]); ?></div>
+                </td>
+                <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                    <div class="data-grid-cell-content" data-bind="text: $col.getLabel($row())"><?php echo ($order["total_due"]); ?></div>
+                </td><!-- /ko -->
+            </tr>
+            <?php if(sizeof($order["products"]) > 1) {
+                $i = 0;
+                foreach($order["products"] as $product) {
+                    if($i == 0) {
+                        $i++;
+                        continue;
+                    }
+                ?>
+               <tr class="product index<?php echo $index; ?>" style="display: none;">
+                   <td colspan="2"></td>
+                   <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                       <?php echo $product["product_name"] ?>
+                   </td>
+                   <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                       <?php echo $product["product_price"] ?>
+                   </td>
+                   <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                       <?php echo $product["quantity_of_products"] ?>
+                   </td>
+                   <td data-bind="css: getFieldClass($row()), click: getFieldHandler($row()), template: getBody()">
+                       <?php echo $product["total_price"] ?>
+                   </td>
+                   <td colspan="3"></td>
+               </tr>
+            <?php } ?>
+            <?php } ?>
+            <?php } ?>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <th><?php echo __("Total"); ?></th>
+                <td><?php echo $total[0]; ?></td>
+                <td><?php echo $total[1]; ?></td>
+                <td><?php echo $total[2]; ?></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /ko --><!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<script>
+    let table_trs = document.querySelectorAll('.admin__data-grid-wrap tbody tr.data-row');
+    for(let tr of table_trs) {
+        let td = tr.querySelectorAll('td')[2];
+        tr.addEventListener('click', showProducts);
+        tr.style.cursor = "pointer";
+        let div = td.querySelector('div');
+        let w = div.offsetWidth;
+        div.style.width = w + "px";
+        div.style.whiteSpace = "nowrap";
+    }
+
+    function showProducts() {
+        let td =  this.querySelectorAll('td')[2];
+        let products = this.querySelectorAll(".product");
+        let trProducts = this.nextSibling.nextSibling;
+
+        if(td.style.display=="none") {
+            td.style.display="table-cell";
+            for(let product of products) {
+                product.style.display="none";
+            }
+            if(trProducts != null) {
+                if(trProducts.classList.contains("product")) {
+                    let trsProducts = this.parentNode.querySelectorAll(".product."+trProducts.classList[1]);
+                    for (let product of trsProducts) {
+                        product.style.display = "none";
+                    }
+                }
+            }
+        } else {
+            td.style.display = "none";
+            for (let product of products) {
+                product.style.display = "table-cell";
+            }
+            if(trProducts != null) {
+                if(trProducts.classList.contains("product")) {
+                    let trsProducts = this.parentNode.querySelectorAll(".product."+trProducts.classList[1]);
+                    for (let product of trsProducts) {
+                        product.style.display = "table-row";
+                    }
+                }
+            }
+        }
+    }
+</script>
+<?php } ?>

@@ -1,0 +1,26 @@
+<div class="product-price-request">
+    <button type="submit" title="Request Price" class="action primary" id="product-request-price-button">
+        <span>Request Price</span>
+    </button>
+</div>
+
+<div id="product-request-price-modal">
+    <div class="modal-body-content">
+        <label for="popUp-name">Name:</label>
+        <input type="text" id="popUp-name" required=""><br>
+        <label for="popUp-email">Email:</label>
+        <input type="email" id="popUp-email" required=""><br>
+        <label for="popUp-comment">Comment:</label>
+        <textarea id="popUp-comment"></textarea>
+        <input type="text" id="popUp-entityId" value="<?= $block->getProduct()->getId(); ?>" hidden>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Gleb_RequestPrise/js/popUp": {
+            }
+        }
+    }
+</script>

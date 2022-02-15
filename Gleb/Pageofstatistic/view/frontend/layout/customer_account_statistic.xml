@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Gleb_Pageofstatistic::css/grid.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Gleb\Pageofstatistic\Block\Statistic" name="gleb_customer_statistic" template="Gleb_Pageofstatistic::statistic.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

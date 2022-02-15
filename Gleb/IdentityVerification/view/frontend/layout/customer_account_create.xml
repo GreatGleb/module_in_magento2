@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_form_register">
+            <arguments>
+                <argument name="show_address_fields" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="form.additional.info">
+            <block class="Gleb\IdentityVerification\Block\Customer\Account" name="form_additional_info_customer" template="Gleb_IdentityVerification::form/file_for_verification.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

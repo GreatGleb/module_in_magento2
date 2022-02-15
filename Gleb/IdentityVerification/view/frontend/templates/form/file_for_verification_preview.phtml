@@ -1,0 +1,21 @@
+<div class="field identity_verification_preview required">
+    <legend class="legend">
+        <span><?php /* @escapeNotVerified */echo __('Identity verification') ?></span>
+    </legend>
+    <?php if($url = $block->getFileUrl()) { $isImage = 1; } else { $isImage = 0; } ?>
+
+        <div class="field">
+            <input type="file" name="identity_verification" id="identity_verification" value="" title="Identity Verification" class="input-text"><br>
+            <img <?php if($isImage): ?>src="<?php echo $url ?>"<?php endif; ?> alt="image" id="identity_verification-preview_image" style="<?php if(!$isImage): ?>display: none;<?php endif; ?> width: 150px; height: 150px; margin-top: 10px;"/>
+        </div>
+        <script>
+            identity_verification.addEventListener('change', function(event) {
+                var output = document.getElementById('identity_verification-preview_image');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.style.display = "inline";
+                output.onload = function() {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            });
+        </script>
+</div>

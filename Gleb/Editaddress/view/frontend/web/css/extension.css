@@ -1,0 +1,19 @@
+.field.street > legend.label {
+    display: none;
+}
+
+.field.street .control .field label {
+    font-weight: 600;
+    position: relative!important;
+}
+
+.field.street .control .field._required label:after {
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+
+#checkout .field.street .field.additional .label {
+    position: static;
+}
