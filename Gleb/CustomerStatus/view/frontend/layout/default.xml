@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link"
+                   name="status-header" after="my-account-link"
+                   template="Gleb_CustomerStatus::custom_sectioning.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

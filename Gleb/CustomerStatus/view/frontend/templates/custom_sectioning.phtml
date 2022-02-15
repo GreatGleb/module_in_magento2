@@ -1,0 +1,16 @@
+<li class="customsection" data-bind="scope: 'section'">
+    <span data-bind="text: customsectioning().msg"></span>
+</li>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "section": {
+                        "component": "Gleb_CustomerStatus/js/sectioning"
+                    }
+                }
+            }
+        }
+    }
+</script>

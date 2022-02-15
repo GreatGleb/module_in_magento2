@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">-->
+<!--        <arguments>-->
+<!--            <argument name="columns" xsi:type="array">-->
+<!--                <item name="coupon_code" xsi:type="string">sales_order.coupon_code</item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_order_grid_data_source"
+                      xsi:type="string">Gleb\AddCoupon\Model\ResourceModel\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Gleb\AddCoupon\Model\ResourceModel\Order\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </type>
+</config>
