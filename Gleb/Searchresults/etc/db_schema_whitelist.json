@@ -1,0 +1,15 @@
+{
+    "search_request": {
+        "column": {
+            "id": true,
+            "text_search": true,
+            "time_search": true,
+            "result": true,
+            "ip_user": true,
+            "registered": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

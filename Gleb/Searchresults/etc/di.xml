@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="SearchresultsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="searchresults_data_source" xsi:type="string">Gleb\Searchresults\Model\ResourceModel\Searchresults\Collection</item>
+            </argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SearchresultsGridDataProvider</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="searchresults_data_source" xsi:type="string">Gleb\Searchresults\Model\ResourceModel\Searchresults\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Gleb\Searchresults\Model\ResourceModel\Searchresults\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">search_request</argument>
+            <argument name="resourceModel" xsi:type="string">Gleb\Searchresults\Model\ResourceModel\Searchresults</argument>
+        </arguments>
+    </virtualType>
+</config>

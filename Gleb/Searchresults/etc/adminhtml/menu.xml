@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Gleb_Searchresults::home" title="Search results" module="Gleb_Searchresults" sortOrder="1000" parent="Magento_Backend::marketing_user_content" resource="Magento_Backend::content" action="searchresults/index/index"/>
+    </menu>
+</config>
